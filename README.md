@@ -93,4 +93,11 @@ SSH into the control node and follow the steps below:
 -Which URl do you navigate to in order to check that the ELK server is running? http://[your.Elk-VM.External.IP]:5601/app/kibana.
 
 ### Using Playbook
-curl https://columbia.bootcampcontent.com/columbia-bootcamp/CU-VIRT-CYBER-PT-02-2022-U-LOL/-/raw/main/13-ELK-Stack-Project/Activities/Stu_Day_1/Unsolved/Resources/install-elk.yml > configELK.yml
+Filebeat
+Edit /etc/ansible/files/filebeatconfig.yml in the ansible container on the control node to include the ELK Stack IP address. You should also change the default login credentials.
+```
+output.elasticsearch:
+hosts: ["<elk.ip.addr>:9200"]
+username: "elastic"
+password: "changeme"
+```
