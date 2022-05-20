@@ -76,22 +76,34 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
+
 -10.0.0.5 and 10.0.06
 We have installed the following Beats on these machines:
+
 -Filebeat and Metricbeat
 These Beats allow us to collect the following information from each machine:
+
 -Filebeat collects the logs for each virtual machine, it collets specific data logs such as how many visitors, traffic from specific countries and where they’re located. You also get a log view of user side errors like 404 or 503 instances. 
+
 -Metricbeat provides metric logs for each virtual machine, you would have access to system metrics such as CPU and Memory usage.
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned:
 SSH into the control node and follow the steps below:
+
 -Copy the configuration file from your Ansible container to your Web VM’s.
+
 -Update the /etc/ansible/hosts file to include IP addresses of the Elk Server VM and web servers.
 -Run the playbook, and navigate to http://Elk_VM_Public_IP]:5601/app/kibana to check that the installation worked as expected.
+
 -Which file is the playbook? Filebeat-Configuration
+
 -Where do you copy it? Copy /etc/ansible/files/filebeatconfig.yml to /etc/filebeat/filebeat.yml
--Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install --Filebeat on? Update Filebeatconfig.yml and specify which machine to install by updating Host file with the private IP addresses and selecting which group to run in ansible.
+
+-Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install -
+
+-Filebeat on? Update Filebeatconfig.yml and specify which machine to install by updating Host file with the private IP addresses and selecting which group to run in ansible.
+
 -Which URl do you navigate to in order to check that the ELK server is running? http://[your.Elk-VM.External.IP]:5601/app/kibana.
 
 ### Using Playbook
