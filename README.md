@@ -6,9 +6,12 @@ The files in this repository were used to configure the network depicted below.
 ![project 1 diagram](https://user-images.githubusercontent.com/56736648/169594192-ac973e8a-68eb-41f6-82fd-99ed35348cb4.png)
 
 
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the _____ file may be used to install only certain pieces of it, such as Filebeat.
+These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the .yml file may be used to install only certain pieces of it, such as Filebeat.
 
-  - _TODO: Enter the playbook file._
+  -Elk-Install.yml
+  -Metricbeat-Playbook.yml
+  -Filebeat-Playbook.yml
+
 
 This document contains the following details:
 - Description of the Topologu
@@ -22,42 +25,36 @@ This document contains the following details:
 ### Description of the Topology
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
+Load balancing ensures that the application will be highly available, in addition to restricting access to the network. Load balancing ensures availability to web-servers which is a core security aspect of the CIA Triad. Jump boxes allow for easier administration duties of multiple systems and provide additional layers between the outside and internal assets.
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the event logs and system metrics.
+Filebeats watches for log directories or specific log files.
+Metricbeat helps you monitor your servers by collecting metrics from the system and services running on the server.
 
-Load balancing ensures that the application will be highly _____, in addition to restricting _____ to the network.
-- _TODO: What aspect of security do load balancers protect? What is the advantage of a jump box?_
-
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____.
-- _TODO: What does Filebeat watch for?_
-- _TODO: What does Metricbeat record?_
-
-The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
 | Name     | Function | IP Address | Operating System |
 |----------|----------|------------|------------------|
 | Jump Box | Gateway  | 10.0.0.1   | Linux            |
-| TODO     |          |            |                  |
-| TODO     |          |            |                  |
-| TODO     |          |            |                  |
+| Web 1    | Server   | 10.0.0.5   | Linux            |
+| Web 2    | Server   | 10.0.0.6   | Linux            |
+| ElkServer| LogServer| 10.1.0.4   | Linux            |
 
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
 
-Only the _____ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _TODO: Add whitelisted IP addresses_
-
-Machines within the network can only be accessed by _____.
-- _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
+Only the Jump Box Provisioner machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+Personal IP address
+Machines within the network can only be accessed by Jump Box. The Elk Machine has access from personal IP address through Port 5601.
 
 A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
-|          |                     |                      |
-|          |                     |                      |
-
+| Jump Box | Yes                 | Personal             |
+|LoadBalanc| Yes                 | Open                 |
+| Web 1    | No                  | 10.0.0.5             |
+| ElkServer| Yes                 | Personal             |
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
