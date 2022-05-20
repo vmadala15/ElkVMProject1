@@ -1,1 +1,0 @@
-Columbia University CS Project
