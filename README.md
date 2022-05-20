@@ -57,39 +57,40 @@ A summary of the access policies in place can be found in the table below.
 | ElkServer| Yes                 | Personal             |
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- _TODO: What is the main advantage of automating configuration with Ansible?_
+Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because services running can be limited, system installations and updates can be streamlined, and processes become replicable.
 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+-Installs Docker and Python3-pip to use as default docker module
+-Increase virtual memory to a value of ‘262144’
+-Publish list of part that Elk runs on (5601, 9200, 5044)
+-Launch Elk image (sebp/elk:761) into the container
+-Allowing the docker service to be enabled on boot
+
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![TODO: Update the path with the name of your screenshot of docker ps output](Images/docker_ps_output.png)
+![docker ps project](https://user-images.githubusercontent.com/56736648/169595454-a75d2c28-76f3-4f3f-9ed7-2bf4bc0bb897.png)
+
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- _TODO: List the IP addresses of the machines you are monitoring_
-
+-10.0.0.5 and 10.0.06
 We have installed the following Beats on these machines:
-- _TODO: Specify which Beats you successfully installed_
-
+-Filebeat and Metricbeat
 These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+-Filebeat collects the logs for each virtual machine, it collets specific data logs such as how many visitors, traffic from specific countries and where they’re located. You also get a log view of user side errors like 404 or 503 instances. 
+-Metricbeat provides metric logs for each virtual machine, you would have access to system metrics such as CPU and Memory usage.
 
 ### Using the Playbook
-In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
-
+In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned:
 SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
-- Update the _____ file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
+-Copy the configuration file from your Ansible container to your Web VM’s.
+-Update the /etc/ansible/hosts file to include IP addresses of the Elk Server VM and web servers.
+-Run the playbook, and navigate to http://Elk_VM_Public_IP]:5601/app/kibana to check that the installation worked as expected.
+-Which file is the playbook? Filebeat-Configuration
+-Where do you copy it? Copy /etc/ansible/files/filebeatconfig.yml to /etc/filebeat/filebeat.yml
+-Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install --Filebeat on? Update Filebeatconfig.yml and specify which machine to install by updating Host file with the private IP addresses and selecting which group to run in ansible.
+-Which URl do you navigate to in order to check that the ELK server is running? http://[your.Elk-VM.External.IP]:5601/app/kibana.
 
-_TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
-
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+### Using Playbook
+curl https://columbia.bootcampcontent.com/columbia-bootcamp/CU-VIRT-CYBER-PT-02-2022-U-LOL/-/raw/main/13-ELK-Stack-Project/Activities/Stu_Day_1/Unsolved/Resources/install-elk.yml > configELK.yml
