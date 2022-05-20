@@ -104,7 +104,7 @@ SSH into the control node and follow the steps below:
 
 -Filebeat on? Update Filebeatconfig.yml and specify which machine to install by updating Host file with the private IP addresses and selecting which group to run in ansible.
 
--Which URl do you navigate to in order to check that the ELK server is running? http://[your.Elk-VM.External.IP]:5601/app/kibana.
+-Which URL do you navigate to in order to check that the ELK server is running? http://[your.Elk-VM.External.IP]:5601/app/kibana.
 
 ### Using Playbook
 Filebeat
