@@ -101,3 +101,25 @@ hosts: ["<elk.ip.addr>:9200"]
 username: "elastic"
 password: "changeme"
 ```
+```
+setup.kibana:
+host: "<elk.ip.addr>:5601"
+```
+-Then run Playbook:
+```
+$ ansible-playbook /etc/ansible/roles/filebeat-playbook.yml
+```
+
+Metricbeat
+Edit /etc/ansible/files/metricbeatconfig.yml in the ansible on the control node to include the ELK Stack IP address. You should also change the default login credentials.
+
+```
+output.elasticsearch:
+hosts: ["<elk.ip.addr>:9200"]
+username: "elastic"
+password: "changeme"
+```
+```
+setup.kibana:
+host: "<elk.ip.addr>:5601"
+```
