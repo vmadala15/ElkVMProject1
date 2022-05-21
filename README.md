@@ -118,7 +118,7 @@ SSH into the control node and follow the steps below:
 
 -Which URL do you navigate to in order to check that the ELK server is running? http://[your.Elk-VM.External.IP]:5601/app/kibana.
 
-### Using Playbook
+### Configuration Commands
 Filebeat
 Edit /etc/ansible/files/filebeatconfig.yml in the ansible container on the control node to include the ELK Stack IP address. You should also change the default login credentials.
 ```
